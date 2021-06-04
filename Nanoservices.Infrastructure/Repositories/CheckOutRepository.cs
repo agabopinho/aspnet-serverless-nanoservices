@@ -12,6 +12,7 @@ namespace Nanoservices.Infrastructure.Repositories
         private readonly List<Customer> customers = new List<Customer>();
         private readonly List<Product> products = new List<Product>();
         private readonly List<CartItem> cartItems = new List<CartItem>();
+
         public CheckOutRepository()
         {
             customers.Add(new Customer()
