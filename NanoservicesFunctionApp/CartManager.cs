@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using Nanoservices.Entities;
 using Nanoservices.Infrastructure.Definitions;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -41,7 +42,8 @@ namespace NanoservicesFunctionApp
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
             HttpRequest req, ILogger log)
         {
-            return new OkObjectResult(await _checkoutService.GetAllCartItems());
+            var items = await _checkoutService.GetAllCartItems();
+            return new OkObjectResult(items.First());
         }
 
         [FunctionName("GetAllCustomers")]
